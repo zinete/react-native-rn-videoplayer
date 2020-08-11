@@ -23,7 +23,7 @@ import {
   SvgVideoBack,
   SvgVideoScang,
   SvgVideoSound
-} from './Svg.js';
+} from '../component/svg';
 const {height, width} = Dimensions.get('screen');
 
 export const Loading = (props) => {

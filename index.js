@@ -34,7 +34,7 @@ import {
   BottomSpeed,
   Speed,
   Header
-} from './Video';
+} from './view/index';
 import {formatSeconds} from './utils/formatSeconds';
 import {
   SvgVideoNextBtn,
