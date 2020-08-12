@@ -846,7 +846,7 @@ class VideoPlayer extends React.Component {
     } = this.state;
     return (
       <>
-        <Header width={this.state.width} />
+        {/* <Header width={this.state.width} /> */}
         <View
           ref={(ref) => (this.videoBox = ref)}
           style={{backgroundColor: '#000', position: 'relative'}}>
@@ -878,7 +878,7 @@ class VideoPlayer extends React.Component {
                 } //暂停
                 onLoad={this.onLoad}
                 onEnd={this.reVideo}
-                resizeMode={'cover'}
+                resizeMode={'contain'}
                 onReadyForDisplay={(e) => {
                   this.props.onReadyForDisplay &&
                     this.props.onReadyForDisplay(e);
