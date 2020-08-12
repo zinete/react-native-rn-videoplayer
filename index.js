@@ -878,7 +878,7 @@ class VideoPlayer extends React.Component {
                 } //暂停
                 onLoad={this.onLoad}
                 onEnd={this.reVideo}
-                resizeMode={'none'}
+                resizeMode={'cover'}
                 onReadyForDisplay={(e) => {
                   this.props.onReadyForDisplay &&
                     this.props.onReadyForDisplay(e);
