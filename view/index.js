@@ -255,12 +255,12 @@ export const Header = (props) => {
         <View
           style={{
             height: StatusBar.currentHeight,
-            backgroundColor: '#000'
+            backgroundColor: '#C7000A'
           }}></View>
       ) : (
         <SafeAreaView style={{backgroundColor: '#000'}} />
       )}
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar barStyle={'light-content'} backgroundColor={'#C7000A'}/>
     </>
   );
 };

@@ -846,7 +846,7 @@ class VideoPlayer extends React.Component {
     } = this.state;
     return (
       <>
-        {/* <Header width={this.state.width} /> */}
+        <Header width={this.state.width} />
         <View
           ref={(ref) => (this.videoBox = ref)}
           style={{backgroundColor: '#000', position: 'relative'}}>
@@ -924,13 +924,13 @@ class VideoPlayer extends React.Component {
                   //如果是全屏 点击返回键是切换到小屏  反之返回上个页面
                   onPress={() => {
                     if (typeof this.props.goBack === 'function') {
+                      Platform.OS === 'android' &&  NativeModules.HideBottomNa.show();
+                      StatusBar.setHidden(false)
+                      StatusBar.setBackgroundColor('#C7000A')
+                      StatusBar.setBarStyle('light-content')
                       this.props.goBack();
                     } else {
-                      if (this.state.smallP) {
-                        this.props.onSmallBack && this.props.onSmallBack();
-                      } else {
-                        this.changeSmallBox();
-                      }
+                      this.changeSmallBox();
                     }
                   }}>
                   <SvgVideoBack height="20" width="20" />
@@ -1092,10 +1092,15 @@ class VideoPlayer extends React.Component {
                         }}
                         onPress={() => {
                           if (typeof this.props.onSmallBack === 'function') {
+                            Platform.OS === 'android' &&  NativeModules.HideBottomNa.show();
+                            StatusBar.setHidden(false)
+                            StatusBar.setBackgroundColor('#C7000A')
+                            StatusBar.setBarStyle('light-content')
                             this.props.onSmallBack();
                           } else {
                             this.changeSmallBox();
                           }
+                          this.changeSmallBox();
                         }}>
                         <SvgVideoSmallBox height="20" width="20" />
                       </TouchableOpacity>
