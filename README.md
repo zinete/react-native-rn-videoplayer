@@ -4,23 +4,46 @@
 <a href="https://www.npmjs.com/package/react-native-rn-videoplayer"><img src="https://img.shields.io/npm/v/react-native-rn-videoplayer.svg?style=flat-square"></a>
 <a href="https://www.npmjs.com/package/react-native-rn-videoplayer"><img src="https://img.shields.io/npm/dm/react-native-rn-videoplayer.svg?style=flat-square"></a>
 
-- 可以上下滑动改变音量、屏幕亮度，拖动进度条显示要改变的时间，全屏切换，缓存进度，双击视频暂停，等功能，基于react-native-video
+- 视频上下滑动调节音量、屏幕亮度，视频左右滑动以及拖动进度条调节视频进度，视频控件锁定，全屏切换，缓存进度，双击视频暂停，等功能，基于react-native-video
 - ps：Android改变亮度无需获取高级权限，只改变当前active也就是当前页面的亮度，改变亮度后，返回进入到其他页面会恢复到原来的亮度。
 
-- 如果你的视频没有居中，请参看[问题2046](https://github.com/react-native-community/react-native-video/issues/2046)
+- 如果你的视频没有居中，参考[问题2046](https://github.com/react-native-community/react-native-video/issues/2046)
 
 - Version 2.x requires react-native >= 0.60.0
 - Version 1.3.2 requires react-native <= 0.59.9
 
 
-<h3><a href="https://www.jianshu.com/p/a6f09d2ab09c" target="_blank">简书地址</a></h3>
+<h3><a href="https://www.jianshu.com/p/a6f09d2ab09c" target="_blank">进入简书地址</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://streamja.com/embed/QpQ9V" target="_blank">进入视频预览</a></h3>
 
-<h3><a href="https://streamja.com/embed/ZJk5P" target="_blank">视频预览</a></h3>
 
-- gif预览 ios 和 android
+## gif预览 ios 和 android
 
 <img src="https://github.com/ngxu/ngxu.github.io/blob/master/img/ios_demo.gif?raw=true" width=320 height=693/>&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://github.com/ngxu/ngxu.github.io/blob/master/img/android_demo.gif?raw=true" width=320 height=693 />
+<img src="https://github.com/ngxu/ngxu.github.io/blob/master/img/android2.2.3.gif?raw=true" width=320 height=693 />
+
+# 增加功能
+-  v2.0.6 增加锁定视频控件，锁定用户操作（调节音量/亮度，展示隐藏控件）
+
+   `
+   lockControl (true/false 默认关闭)
+   ` 
+   
+<img src="https://github.com/ngxu/ngxu.github.io/blob/master/img/unlock.jpg?raw=true" width=260 />&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/ngxu/ngxu.github.io/blob/master/img/locking.jpg?raw=true" width=260  />	
+ 
+
+-  v2.0.8 自定义小屏状态栏 类型fun
+    默认状态栏为沉浸式，黑底白字，有状态栏高度，可查看view/index.js 的Header组件
+   ```
+   <VideoPlayer
+   statusBar={()=>null}//不使用默认状态栏 跟当前app保持一致
+   statusBar={()=><Component/>}//自定义
+   />
+   ```
+
+-  v2.2.1 增加手势左右滑动视频区域(非进度条上的点)来调整视频进度
+
+-  v2.2.5 autoPlay={false}是否自动播放，默认为true
 
 ## Getting started
 1. 
@@ -180,12 +203,14 @@ react-native link react-native-video
 
 ## Usage
 ```javascript
-import Videoplayer from 'react-native-rn-videoplayer';
+import VideoPlayer from 'react-native-rn-videoplayer';
 
 <VideoPlayer
-url={"https://xxxxx.mp4"}
-poster={"http:XXX.jpg"}//视频封面
+url={"xxxxx.mp4"}
+autoPlay={false}//是否自动播放，默认为true v2.2.5增加
+poster={"http://XXX.jpg"}//视频封面
 ref={(ref)=>this.player=ref}
+lockControl={true}//控件锁定功能 v2.0.6增加
 moreSetting={() => null}//右上角更多按钮 输出null则不显示
 onSmallBack={()=>{this.props.navigation.goBack()}}
 />
