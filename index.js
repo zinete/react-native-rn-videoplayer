@@ -892,7 +892,7 @@ class VideoPlayer extends React.Component {
                                     paused={this.adminPaused ? this.state.paused : (this.props.autoPlay ? false : true)}//暂停
                                     onLoad={this.onLoad}
                                     onEnd={this.reVideo}
-                                    resizeMode={"contain"}
+                                    resizeMode={this.props.resizeMode}
                                     onReadyForDisplay={(e) => {
                                         this.props.onReadyForDisplay && this.props.onReadyForDisplay(e)
                                     }}
